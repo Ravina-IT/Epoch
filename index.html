@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Epoch</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://fontlibrary.org//face/minecraftia"
+      type="text/css"
+    />
+    <link rel="icon" href="./images/fav-icon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- Loader -->
+    <div id="loader">
+      <img
+        class="loader-img"
+        src="./images/loader_dance.gif"
+        alt="Loading..."
+      />
+      <h5 class="loader-h5">Loading...</h5>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Show loader
+        document.getElementById("loader").style.display = "block";
+
+        // Hide loader and reveal content after 5 seconds
+        setTimeout(function () {
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("content").style.display = "block";
+        }, 4000);
+      });
+    </script>
+    <!-- End Loader -->
+    <div id="content" style="display: none">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light bg-transparent">
+        <div class="container">
+          <a class="navbar-brand fw-bold" href="#">
+            <!-- <img  src="./images/text-1709129653063.png" alt="Logo" /> -->
+            <h1 class="nav_logo">EPOCH'24</h1>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#home">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#gallery">GALLERY</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#events">EVENTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#faq">FAQ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#foot">CONTACT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar End -->
+
+      <!-- Home -->
+      <header id="home" class="parallax-header">
+        <div class="container-fluid">
+          <video class="video-background" autoplay loop muted>
+            <source src="./images/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="header-overlay">
+            <div class="header-home-content">
+              <center>
+                <!-- <h4 class="sub-heading"><b>KONGU ENGINEERING COLLEGE</b></h4> -->
+                <img
+                  class="kec-heading"
+                  src="./images/Kongu Engineering College.png"
+                />
+                <br /><br />
+                <p class="description">Association of INFORMATION TECHNOLOGY</p>
+                <i class="sub-description">Proudly Presents</i><br /><br />
+                <h1 class="heading">EPOCH'24</h1>
+                <img
+                  src="https://see.fontimg.com/api/renderfont4/M7Ke/eyJyIjoiZnMiLCJoIjoyOCwidyI6MTI1MCwiZnMiOjIyLCJmZ2MiOiIjRTRFQUUyIiwiYmdjIjoiIzBBMEIwQSIsInQiOjF9/QSBOYXRpb25hbCBMZXZlbCBJbnRlciBDb2xsZWdlIFRlY2huaWNhbCBTeW1wb3NpdW0/blox-brk.png"
+                /><br />
+                <i class="sub-description-date"> <b>15th March 2024</b></i
+                ><br /><br />
+                <button class="home-btn">
+                  <a href="https://forms.gle/JKPux7PPkTwGWz5q8" target="_blank"
+                    >Register Now</a
+                  >
+                </button>
+              </center>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Home End -->
+
+      <!-- Headline -->
+      <div class="countdown-container">
+        <h1 class="countdown-heading" id="headline">Game Starts in...</h1>
+        <div id="countdown">
+          <ul class="countdown-ul">
+            <li class="countdown-li"><span id="days"></span>Days</li>
+            <li class="countdown-li"><span id="hours"></span>Hours</li>
+            <li class="countdown-li"><span id="minutes"></span>Minutes</li>
+            <li class="countdown-li"><span id="seconds"></span>Seconds</li>
+          </ul>
+        </div>
+        <div id="content" class="emoji">
+          <span>🥳</span>
+          <span>🎉</span>
+          <span>🎂</span>
+        </div>
+
+        <script>
+          (function () {
+            const second = 1000,
+              minute = second * 60,
+              hour = minute * 60,
+              day = hour * 24;
+
+            //I'm adding this section so I don't have to keep updating this pen every year :-)
+            //remove this if you don't need it
+            let today = new Date(),
+              dd = String(today.getDate()).padStart(2, "0"),
+              mm = String(today.getMonth() + 1).padStart(2, "0"),
+              yyyy = today.getFullYear(),
+              nextYear = yyyy + 1,
+              dayMonth = "03/16/",
+              birthday = dayMonth + yyyy;
+
+            today = mm + "/" + dd + "/" + yyyy;
+            if (today > birthday) {
+              birthday = dayMonth + nextYear;
+            }
+            //end
+
+            const countDown = new Date(birthday).getTime(),
+              x = setInterval(function () {
+                const now = new Date().getTime(),
+                  distance = countDown - now;
+
+                (document.getElementById("days").innerText = Math.floor(
+                  distance / day
+                )),
+                  (document.getElementById("hours").innerText = Math.floor(
+                    (distance % day) / hour
+                  )),
+                  (document.getElementById("minutes").innerText = Math.floor(
+                    (distance % hour) / minute
+                  )),
+                  (document.getElementById("seconds").innerText = Math.floor(
+                    (distance % minute) / second
+                  ));
+
+                //do something later when date is reached
+                if (distance < 0) {
+                  document.getElementById("headline").innerText = "Time's up!";
+                  document.getElementById("countdown").style.display = "none";
+                  document.getElementById("content").style.display = "block";
+                  clearInterval(x);
+                }
+                //seconds
+              }, 0);
+          })();
+        </script>
+      </div>
+
+      <!-- Headline End -->
+
+      <!-- Marquee -->
+      <marquee>
+        <h1 class="marquee-h1">
+          Exclusively for Engineering Students 💵 Registration Fee 200/- per
+          person 💰 Cash prize upto 20,000/- 🎉 Exciting gifts for overall
+          champion!
+        </h1>
+        <!-- <script>
+          let marqueeText = document.getElementById("marqueeText");
+          function marquee() {
+            marqueeText.style.animation = "marquee 20s linear infinite";
+          }
+
+          marquee();
+        </script> -->
+      </marquee>
+      <!-- Marquee End -->
+
+      <!-- Banner -->
+      <!-- <div id="Banner" class="banner-wrapper">
+      <div class="banner-container">
+        <i class="fas fa-laptop-code"></i>
+        <span class="banner-num" data-val="400">3</span>
+        <span class="banner-text">Tech Events</span>
+      </div>
+
+      <div class="banner-container">
+        <i class="fas fa-puzzle-piece"></i>
+        <span class="banner-num" data-val="340">3</span>
+        <span class="banner-text">Non-Tech Events</span>
+      </div>
+
+      <div class="banner-container">
+        <i class="fas fa-person-chalkboard"></i>
+        <span class="banner-num" data-val="225">1</span>
+        <span class="banner-text">Workshop</span>
+      </div>
+    </div> -->
+      <!-- Banner End -->
+      <!-- Banner -->
+      <div id="Banner" class="banner-wrapper">
+        <div class="banner-container flip-card" id="tech-events">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <i class="fas fa-laptop-code"></i>
+              <span class="banner-num" data-val="400">3</span>
+              <span class="banner-text">Tech Events</span>
+            </div>
+            <div class="flip-card-back">
+              <!-- Back content if needed -->
+            </div>
+          </div>
+        </div>
+
+        <div class="banner-container flip-card" id="non-tech-events">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <i class="fas fa-puzzle-piece"></i>
+              <span class="banner-num" data-val="340">1</span>
+              <span class="banner-text">Workshop</span>
+            </div>
+            <div class="flip-card-back">
+              <!-- Back content if needed -->
+            </div>
+          </div>
+        </div>
+
+        <div class="banner-container flip-card" id="workshop">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <i class="fas fa-person-chalkboard"></i>
+              <span class="banner-num" data-val="225">3</span>
+              <span class="banner-text">Non-Tech Events</span>
+            </div>
+            <div class="flip-card-back">
+              <!-- Back content if needed -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function isInViewport(element) {
+          var rect = element.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <=
+              (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <=
+              (window.innerWidth || document.documentElement.clientWidth)
+          );
+        }
+        function handleScroll() {
+          var bannerContainers = document.querySelectorAll(".banner-container");
+
+          bannerContainers.forEach(function (bannerContainer) {
+            if (isInViewport(bannerContainer)) {
+              bannerContainer.classList.add("active");
+            } else {
+              bannerContainer.classList.remove("active");
+            }
+          });
+        }
+        window.addEventListener("scroll", handleScroll);
+        handleScroll();
+      </script>
+      <!-- Banner End -->
+
+      <!-- Videos -->
+      <div class="promo">
+        <h1 class="video-heading">PROMO VIDEO</h1>
+        <div class="video-container">
+          <center>
+            <video controls class="promo-video" muted autoplay>
+              <source src="./images/promo-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </center>
+        </div>
+      </div>
+      <!-- <div class="dark-down"><br /><br /><br /><br /></div> -->
+
+      <!-- About -->
+      <div id="about" class="about-content">
+        <div class="dark-up"><br /><br /><br /><br /></div>
+        <div class="about-left about-slideIn">
+          <img class="poster-img" src="./images/poster.JPG" alt="" />
+        </div>
+        <div class="about-right" class="about-slideIn">
+          <h1 class="about-heading">ABOUT EPOCH</h1>
+          <br />
+          <p class="about-para">
+            Hello All !!! <br /><br />
+            Welcome to EPOCH, a National Level Technical Symposium held by IT
+            Association, Kongu Engineering College. And EPOCH’24 is the
+            brand-new edition of this legacy! This event is a combination of fun
+            and frolic, integrated with the technical domain and guaranteeing a
+            lot of enjoyment to participants. This time, the theme of the event
+            is inspired from “Minecraft”, which is a game developed by
+            Microsoft, and now very popular among teenagers.
+            <br /><br />
+            This is a platform for students from different colleges to showcase
+            their technical prowess and skills, and also making new friends
+            along the way. EPOCH offers a wide range of opportunities in the
+            form of 3 Technical events, 1 workshop, 3 Non-technical events, and
+            an immersive technical workshop! So guys, go out there and enjoy
+            while you can!!
+          </p>
+        </div>
+        <!-- cg -->
+
+        <div class="about-cg-left" class="about-slideIn">
+          <h1 class="about-cg-heading">ABOUT CHIEF GUEST</h1>
+          <br />
+          <h5 class="cg-name">Sudha Muralidharan</h5>
+          <br />
+          <p class="about-cg-para">
+            She is working as a manager in the department of Information
+            Resource Centre at Tata Consultancy Services. She has done her
+            bachelors of Science from Stella Maris College, Chennai, and her
+            Masters in Library Science from University of Madras. She has been a
+            working woman for more than two decades, balancing out between work
+            and life.<br />
+            During her tenure at Tata Consultancy Services, she has always been
+            enhancing her skills, in Design Thinking, Team Skill, Business
+            research, leadership, technical skills, managerial skills and much
+            more. She has also participated and presented papers at library
+            conferences and has won best paper awards in a noted few. Her
+            hobbies include painting and playing the instrument Veena, which she
+            longs to catch up with amidst her daily routine.
+
+            <br />
+          </p>
+          <a
+            class="cg-know-more"
+            href="https://www.linkedin.com/in/sudha-muralidharan-1017ab32?originalSubdomain=in"
+            target="_blank"
+            >-> Know more</a
+          >
+        </div>
+        <div class="about-cg-right about-slideIn">
+          <img class="cg-img" src="./images/cg-img.png" alt="" />
+        </div>
+      </div>
+      <!-- About End -->
+
+      <!-- Gallery -->
+      <div id="gallery" class="gallery-container">
+        <h1 class="gallery-heading">GALLERY</h1>
+        <div class="slider">
+          <div class="slide-track">
+            <div class="slide">
+              <img class="slide-img" src="./images/image-1.jpeg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-2.jpeg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-3.jfif" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-4.avif" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-5.jpeg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-6.jpg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-7.jpg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-8.jpg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-9.jpeg" alt="images" />
+            </div>
+
+            <!--duplicate-->
+
+            <div class="slide">
+              <img class="slide-img" src="./images/image-1.jpeg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-2.jpeg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-3.jfif" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-4.avif" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-5.jpeg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-6.CR2" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-7.jpg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-8.jpg" alt="images" />
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./images/image-9.jpeg" alt="images" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Gallery End -->
+
+      <!-- Events -->
+      <div id="events">
+        <div class="dark-down"><br /><br /><br /><br /></div>
+        <div id="card-area">
+          <div class="events-wrapper">
+            <h1 class="events-heading">TECH EVENTS</h1>
+            <hr />
+            <div class="box-area">
+              <div class="box">
+                <img src="./images/paper.png" alt="" />
+                <div class="overlay">
+                  <h3>
+                    PaperPulse:<br /><span class="event-sub-heading"
+                      >Paper presentation</span
+                    >
+                  </h3>
+                  <p class="events-para">
+                    Present the mind-blowing ideas with your squad and impress
+                    the panel of judges. <br />
+                    A way of expressing your knowledge to everyone!
+                  </p>
+                  <!-- <button class="home-btn">
+                    <a
+                      href="https://forms.gle/ADUPuEU6Ee3BbYSr5"
+                      target="_blank"
+                      >Register Now</a
+                    >
+                  </button> -->
+                </div>
+              </div>
+              <div class="box">
+                <img src="./images/code.png" alt="" />
+                <div class="overlay">
+                  <h3>
+                    BitBattles:<br /><span class="event-sub-heading"
+                      >Coding Chronicles</span
+                    >
+                  </h3>
+                  <p class="events-para">
+                    Compete with fellow coders in this<br />
+                    amazing coding contest!! It's not just code; it's the
+                    chronicles of programming prowess!
+                  </p>
+                  <!-- <button class="home-btn">
+                    <a
+                      href="https://forms.gle/YyrUraHgWaqi1eA17"
+                      target="_blank"
+                      >Register Now</a
+                    >
+                  </button> -->
+                </div>
+              </div>
+              <div class="box">
+                <img src="./images/UiUx.png" alt="" />
+                <div class="overlay">
+                  <h3>
+                    WebWeaver Challenge:<br /><span class="event-sub-heading"
+                      >UI/UX Design</span
+                    >
+                  </h3>
+                  <p class="events-para">
+                    Dive into the digital realm with WebWeaver Challenge!
+                    Unleash your coding creativity, master the art of web
+                    design, and weave a mesmerizing online experience. <br />
+                    Let innovation be your guide!
+                  </p>
+
+                  <!-- <button class="home-btn">
+                    <a
+                      href="https://forms.gle/t6Hh69FjsAoPXmAWA"
+                      target="_blank"
+                      >Register Now</a
+                    >
+                  </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workshop -->
+      <div class="events-wrapper">
+        <h1 class="events-heading">WORKSHOP</h1>
+        <hr />
+        <div class="workshop">
+          <div class="workshop-container">
+            <p class="workshop-text">
+              Introducing <b>Mr. A. Jeevanantham,</b> Assistant Professor at
+              Kongu Engineering College, specializing in Computer Science and
+              Information Systems. Graduating with an MS from Middlesex
+              University, UK, in 2011, he's been integral since 2014. In 2021,
+              he received the "First in Order of Merit Award" from DG NCC,
+              Ministry of Defence, for exemplary contributions. Beyond academia,
+              he co-authored patents like "Intelligent Imaging Technique for
+              Precision Farming." Join his workshop on "Introduction to Ethical
+              Hacking" for valuable insights blending academic excellence with
+              real-world applications.
+            </p>
+            <!-- <button class="home-btn">
+              <a href="https://forms.gle/2ZcVA3wFerWAWuvQ9" target="_blank"
+                >Register Now</a
+              >
+            </button> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- events2 -->
+      <div id="events">
+        <div id="card-area">
+          <div class="events-wrapper">
+            <h1 class="events-heading">NON TECH EVENTS</h1>
+            <hr />
+            <div class="blinking-text">
+              &#128165; Events may vary according to time constraints...
+              &#128165;
+            </div>
+            <script>
+              // Get the element
+              var blinkingText = document.querySelector(".blinking-text");
+
+              // Toggle class to start/stop blinking
+              setInterval(function () {
+                blinkingText.classList.toggle("blinking");
+              }, 2000); // Adjust blinking interval as needed (in milliseconds)
+            </script>
+            <div class="box-area">
+              <div class="box">
+                <img src="./images/ipl.png" alt="" />
+                <div class="overlay">
+                  <h3>IPL Auction<br /></h3>
+                  <p class="events-para">
+                    Dive into the heart of cricket excitement as franchises
+                    battle for supremacy, bidding on top-tier players to
+                    assemble their dream squads. Join us for the electrifying
+                    IPL Auction event where fortunes change, and cricket legends
+                    are born!
+                  </p>
+                  <!-- <button class="home-btn">
+                    <a
+                      href="https://forms.gle/GnZCYBikB87pPn7C6"
+                      target="_blank"
+                      >Register Now</a
+                    >
+                  </button> -->
+                </div>
+              </div>
+
+              <div class="box">
+                <img src="./images/business.png" alt="" />
+                <div class="overlay">
+                  <h3>CreativeCrux<br /></h3>
+                  <p class="events-para">
+                    Unleash your problem-solving prowess in blindfolded drawing
+                    challenges and strategic scenario navigation, as teams of
+                    four compete for victory through teamwork and innovation.
+                    Join us for an exhilarating journey of collaboration and
+                    creativity!
+                  </p>
+                  <!-- <button class="home-btn">
+                    <a
+                      href="https://forms.gle/4exXRJ4quyNayN3x5"
+                      target="_blank"
+                      >Register Now</a
+                    >
+                  </button> -->
+                </div>
+              </div>
+              <div class="box">
+                <img src="./images/song.png" alt="" />
+                <div class="overlay">
+                  <h3>MeloDrama<br /></h3>
+                  <p class="events-para">
+                    Immerse yourself in a musical showdown where three showcase
+                    their lyrical expertise, hunting for the perfect song
+                    lyrics. An opportunity for passionate music minds to shine,
+                    predict songs, and revel in the joy of melody exploration!
+                  </p>
+                  <!-- <button class="home-btn">
+                    <a
+                      href="https://forms.gle/jpFgnd1FYBraAH1h8"
+                      target="_blank"
+                      >Register Now</a
+                    >
+                  </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workshop -->
+      <!-- <div id="events">
+        <div id="card-area">
+          <div class="events-wrapper">
+            <h1 class="events-heading">WORKSHOP</h1>
+            <hr />
+            <div class="box-area">
+              <div class="box">
+                <img src="./images/flower.jpg" alt="" />
+                <div class="overlay">
+                  <h3>ABC</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Praesentium accusamus fugiat explicabo officia. Modi neque,
+                    deserunt aspernatur fuga voluptatum quis omnis totam minima
+                    repellendus voluptate expedita rem corrupti excepturi autem.
+                  </p>
+                  <button class="home-btn"><a href="#">Register Now</a></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="events-end"></div>
+      <!-- <div class><br></div> -->
+      <!-- Event End -->
+
+      <!-- Faq -->
+      <center>
+        <h1 class="faq-heading">FREQUENTLY ASKED QUESTIONS</h1>
+        <div class="accordion accordion-flush" id="faq">
+          <!-- 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne"
+                aria-expanded="false"
+                aria-controls="flush-collapseOne"
+              >
+                Will food and refreshments be provided?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseOne"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingOne"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Food and refreshments are most definitely included in the
+                agenda. Lunch will be provided to the participants after the
+                first-half events are over.
+              </div>
+            </div>
+          </div>
+          <!-- 2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo"
+                aria-expanded="false"
+                aria-controls="flush-collapseTwo"
+              >
+                Is transportation available to the event venue?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingTwo"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Transportation is most certainly provided from 07.30AM till
+                8.30AM from PERUNDURAI BUS STAND. Kindly use the locator (google
+                map link) given in contact details below.
+              </div>
+            </div>
+          </div>
+          <!-- 3 -->
+          <!-- 4 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFour">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFour"
+                aria-expanded="false"
+                aria-controls="flush-collapseFour"
+              >
+                Whether certificates will be provided for all events?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseFour"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingFour"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Yes, certificates will be provided to all the participants in
+                addition different prize categories and prize money worth of
+                Rs.20,000 will be provided. The decision of the jury is final
+                for positions and prizes.
+              </div>
+            </div>
+          </div>
+          <!-- 5 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFive">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFive"
+                aria-expanded="false"
+                aria-controls="flush-collapseFive"
+              >
+                How about parking facilities for vehicles?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseFive"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingFive"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Separate parking facilities are available for two and four
+                wheelers. Participants can park their vehicles at their own
+                risk. Volunteers will guide you on the same.
+              </div>
+            </div>
+          </div>
+          <!-- 6 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingSix">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseSix"
+                aria-expanded="false"
+                aria-controls="flush-collapseSix"
+              >
+                When is the last date for registration ??
+              </button>
+            </h2>
+            <div
+              id="flush-collapseSix"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingSix"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                14.03.2024 (Thursday) is the last date for registration, however
+                we encourage to register ASAP since few events may have limited
+                seats.
+              </div>
+            </div>
+          </div>
+        </div>
+      </center>
+      <!-- Faq End -->
+
+      <!--Footer-->
+      <footer id="foot" class="footer-container">
+        <div class="footer-content">
+          <div class="left footer-box">
+            <div class="footer-content-div">
+              <br />
+              <div style="flex: 1">
+                <!-- <img src="./images/kk.png" style="width: 20%; height: 20%" /> -->
+                <img
+                  class="footer-image1"
+                  src="./images/footer_logo.png"
+                  style="width: 50%; height: 30%"
+                  alt="images"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="center footer-box">
+            <div class="footer-content-div">
+              <br />
+              <div class="footer-place">
+                <a
+                  href="https://www.google.com/maps/search/Kongu+Engineering+College/@11.2749379,77.6054184,17z?entry=ttu"
+                  target="_blank"
+                  style="text-decoration: none"
+                >
+                  <span class="fas fa-map-marker-alt"></span>
+                  <span class="text">Kongu Engineering College <br /> </span>
+                </a>
+              </div>
+
+              <div class="footer-phone">
+                <a
+                  href="tel:+918838300404"
+                  target="_blank"
+                  style="text-decoration: none"
+                >
+                  <span class="fas fa-phone"></span>
+                  <span class="text">Aravindh: 9443836278</span>
+                </a>
+              </div>
+
+              <div class="footer-email">
+                <a
+                  href="mailto:madhumithas.20it@kongu.edu"
+                  target="_blank"
+                  style="text-decoration: none"
+                >
+                  <span class="fas fa-envelope"></span>
+                  <span class="text">madhumithas.20it@kongu.edu</span>
+                </a>
+              </div>
+
+              <div class="footer-instagram" style="padding-top: 3.5%">
+                <a
+                  href="https://www.instagram.com/kec_it_association_official"
+                  target="_blank"
+                  style="text-decoration: none"
+                >
+                  <span class="fab fa-instagram"></span>
+                  <span class="text">kec_it_association_official</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="right footer-box">
+            <div class="footer-content-div">
+              <br />
+              <div>
+                <img
+                  class="footer-image2"
+                  src="./images/footer_logo2.png"
+                  style="width: 60%; height: 60%"
+                  alt="images"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom" style="padding-top: 2%">
+          <center>
+            <span class="credit"
+              >Created By <a href="#footer">Ravina & Nithin</a> |
+            </span>
+            <span>Copyright </span>
+            <span class="far fa-copyright"></span
+            ><span>
+              2024
+              <a href="https://kongu.ac.in/" target="_blank"
+                >Kongu Engineering College
+              </a></span
+            >
+          </center>
+        </div>
+      </footer>
+      <!--Footer End-->
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
