@@ -817,6 +817,7 @@ marquee{
 
   .events-para{
     font-family: constantia;
+    font-size: 1rem;
   }
    .boxLhover img {
     transform: scale(1.2);
